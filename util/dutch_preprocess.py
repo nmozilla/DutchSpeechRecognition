@@ -12,10 +12,16 @@ from os import listdir
 from os.path import isfile, join
 
 
-dev_path = '/home/neda.ahmadi/GermanSpeechRecognition/dutchdataset/dev.tsv'
-train_path = '/home/neda.ahmadi/GermanSpeechRecognition/dutchdataset/train.tsv'
-test_path = '/home/neda.ahmadi/GermanSpeechRecognition/dutchdataset/test.tsv'
-root = '/home/neda.ahmadi/GermanSpeechRecognition/clips_flac/'
+#dev_path = '/home/neda.ahmadi/GermanSpeechRecognition/dutchdataset/dev.tsv'
+#train_path = '/home/neda.ahmadi/GermanSpeechRecognition/dutchdataset/train.tsv'
+#test_path = '/home/neda.ahmadi/GermanSpeechRecognition/dutchdataset/test.tsv'
+#root = '/home/neda.ahmadi/GermanSpeechRecognition/clips_flac/'
+
+dev_path = '/data/s3559734/DutchDS/dev.tsv'
+train_path = '/data/s3559734/DutchDS/train.tsv'
+test_path = '/data/s3559734/DutchDS/test.tsv'
+root = '/data/s3559734/DutchSpeechRecognition/clips_flac/'
+
 n_jobs = -2
 n_filters = 40
 win_size = 0.025/3
@@ -31,7 +37,7 @@ def traverse(root,path,search_fix='.wav',return_label=False):
  else:
   set = files[int(0.9*numfiles):]
  f_list = []
- with open('/home/neda.ahmadi/GermanSpeechRecognition/dutchdataset/validated.tsv') as txt_file:
+ with open('/data/s3559734/DutchDS/validated.tsv') as txt_file:
   reader = csv.reader(txt_file, delimiter='\t')
  # print('reader',reader)
   for line in reader:

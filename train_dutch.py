@@ -87,7 +87,7 @@ while global_step<total_steps:
         print('Current step :',global_step,end='\r',flush=True)
 
         batch_loss, batch_ler = batch_iterator(batch_data, batch_label, listener, speller, optimizer, tf_rate,
-                                               is_training=True, data='libri', **conf['model_parameter'])
+                                               is_training=True, data='dutch', **conf['model_parameter'])
         global_step += 1
 
         if (global_step) % verbose_step == 0:
@@ -104,15 +104,15 @@ while global_step<total_steps:
 
     for batch_data,batch_label in valid_set:
         batch_loss, batch_ler = batch_iterator(batch_data, batch_label, listener, speller, optimizer,
-                                               tf_rate, is_training=False, data='libri', **conf['model_parameter'])
+                                               tf_rate, is_training=False, data='dutch', **conf['model_parameter'])
         val_loss.append(batch_loss)
         val_ler.extend(batch_ler)
 
 
     val_loss = np.array([sum(val_loss)/len(val_loss)])
     val_ler = np.array([sum(val_ler)/len(val_ler)])
-    log_writer.add_scalars('loss',{'dev':val_loss}, global_step)
-    log_writer.add_scalars('cer',{'dev':val_ler}, global_step)
+    log_writer.add_scalars('loss',{'test':val_loss}, global_step)
+    log_writer.add_scalars('cer',{'test':val_ler}, global_step)
 
 
     # Generate Example

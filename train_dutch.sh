@@ -5,4 +5,5 @@
 #SBATCH --mem=125GB
 
 
-python3 train_dutch.py /data/s3757994/DutchSpeechRecognition/config/las_dutch_config.yaml
+#python3 train_dutch.py /data/s3757994/DutchSpeechRecognition/config/las_dutch_config.yaml
+python3 train_dutch.py /home/neda.ahmadi/DutchSpeechRecognition/config/las_dutch_config.yaml
